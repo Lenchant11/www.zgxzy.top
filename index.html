@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Remote Job Opportunities India | Flexible Work From Home</title>
-  <meta name="description" content="Explore legitimate work from home opportunities in India. We connect skilled professionals with companies offering remote positions across various industries." />
-  <meta name="keywords" content="remote jobs India, work from home, flexible jobs, remote work, professional opportunities, remote careers" />
+  <title>Global Remote Job Opportunities | Flexible Work From Home</title>
+  <meta name="description" content="Explore legitimate work from home opportunities worldwide. We connect skilled professionals with companies offering remote positions across various industries." />
+  <meta name="keywords" content="remote jobs, work from home, flexible jobs, remote work, professional opportunities, remote careers, global remote jobs" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Google tag (gtag.js) -->
@@ -106,6 +106,12 @@
     .progress-bar {display: flex; margin: 18px 0; gap: 8px;}
     .progress-step {flex: 1; height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px;}
     .progress-step.active {background: var(--primary);}
+
+    /* Country selector styles */
+    .country-selector {display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);}
+    .country-flag {width: 24px; height: 16px; border-radius: 2px; object-fit: cover;}
+    .country-select {background: transparent; border: none; color: var(--text); font-weight: 600; padding: 0; margin: 0; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a0a8b5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right center; background-size: 16px; padding-right: 25px; cursor: pointer;}
+    .country-select:focus {outline: none; box-shadow: none;}
 
     /* Modal styles */
     .modal {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;}
@@ -295,6 +301,7 @@
       .stats li {padding: 14px;}
       .benefits-media {height: 220px;}
       .radio-group {flex-direction: column; gap: 12px;}
+      .country-selector {flex-direction: column; align-items: flex-start; gap: 8px;}
       
       /* Form Modal Mobile Adjustments */
       .form-modal .modal-content {
@@ -342,7 +349,7 @@
   <!-- Top Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Home">RemoteIndia</a>
+      <a class="brand" href="#top" aria-label="Home">GlobalRemoteJobs</a>
       <nav class="nav-links">
         <a href="#roles" class="nav-link">Job Types</a>
         <a href="#how-it-works" class="nav-link">How It Works</a>
@@ -357,10 +364,26 @@
   <section id="top" class="hero">
     <div class="container hero-grid">
       <div class="hero-copy fade-in">
-        <h1>Professional Remote Work Opportunities</h1>
+        <h1>Global Remote Work Opportunities</h1>
         <p class="subtitle">
-          Connect with companies offering legitimate remote positions across India. Find opportunities that match your skills and schedule.
+          Connect with companies offering legitimate remote positions worldwide. Find opportunities that match your skills and schedule.
         </p>
+
+        <!-- Country selector -->
+        <div class="country-selector">
+          <span>Available in:</span>
+          <select id="countrySelector" class="country-select">
+            <option value="us" data-code="+1" data-flag="https://flagcdn.com/w20/us.png">United States</option>
+            <option value="ca" data-code="+1" data-flag="https://flagcdn.com/w20/ca.png">Canada</option>
+            <option value="in" data-code="+91" data-flag="https://flagcdn.com/w20/in.png" selected>India</option>
+            <option value="sg" data-code="+65" data-flag="https://flagcdn.com/w20/sg.png">Singapore</option>
+            <option value="it" data-code="+39" data-flag="https://flagcdn.com/w20/it.png">Italy</option>
+            <option value="fr" data-code="+33" data-flag="https://flagcdn.com/w20/fr.png">France</option>
+            <option value="de" data-code="+49" data-flag="https://flagcdn.com/w20/de.png">Germany</option>
+            <option value="mx" data-code="+52" data-flag="https://flagcdn.com/w20/mx.png">Mexico</option>
+            <option value="kr" data-code="+82" data-flag="https://flagcdn.com/w20/kr.png">South Korea</option>
+          </select>
+        </div>
 
         <!-- credibility logos -->
         <div class="logos" aria-label="Industries we serve">
@@ -376,6 +399,7 @@
           <li>No fees to apply - completely free service</li>
           <li>Flexible schedules and remote work options</li>
           <li>Transparent application process</li>
+          <li>Opportunities across 9+ countries</li>
         </ul>
       </div>
 
@@ -398,9 +422,9 @@
           <div class="field">
             <label for="phone">Phone Number<span class="req">*</span></label>
             <div class="phone-input-group">
-              <div class="country-code">
-                <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="14" style="display:inline-block;vertical-align:middle;margin-right:8px;border-radius:2px;">
-                +91
+              <div class="country-code" id="phoneCountryCode">
+                <img id="countryFlag" src="https://flagcdn.com/w20/in.png" alt="Country flag" width="20" height="14" style="display:inline-block;vertical-align:middle;margin-right:8px;border-radius:2px;">
+                <span id="countryCode">+91</span>
               </div>
               <input id="phone" name="phone" type="tel" class="phone-input" placeholder="98765 43210" required inputmode="tel" />
             </div>
@@ -409,6 +433,22 @@
           <div class="field">
             <label for="email">Email Address<span class="req">*</span></label>
             <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="country">Country<span class="req">*</span></label>
+            <select id="country" name="country" required>
+              <option value="" disabled selected>Select your country</option>
+              <option value="us">United States</option>
+              <option value="ca">Canada</option>
+              <option value="in" selected>India</option>
+              <option value="sg">Singapore</option>
+              <option value="it">Italy</option>
+              <option value="fr">France</option>
+              <option value="de">Germany</option>
+              <option value="mx">Mexico</option>
+              <option value="kr">South Korea</option>
+            </select>
           </div>
 
           <div class="field">
@@ -437,7 +477,6 @@
 
           <!-- Hidden fields -->
           <input type="hidden" id="username" name="username" value="RemoteWorker" />
-          <input type="hidden" id="country" name="country" value="India" />
 
           <div class="field check">
             <input id="consent" name="consent" type="checkbox" required style="width: auto; margin-top: 4px;" checked />
@@ -467,7 +506,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <h2>How Our Matching Process Works</h2>
-        <p class="muted">We connect skilled professionals with companies offering legitimate remote work opportunities.</p>
+        <p class="muted">We connect skilled professionals with companies offering legitimate remote work opportunities worldwide.</p>
       </div>
       
       <div class="steps">
@@ -492,7 +531,7 @@
       
       <div class="transparency-section fade-in">
         <h3>Our Transparency Promise</h3>
-        <p>We believe in complete transparency. RemoteIndia is a matching service that connects job seekers with employers. We do not:</p>
+        <p>We believe in complete transparency. GlobalRemoteJobs is a matching service that connects job seekers with employers. We do not:</p>
         <ul class="list">
           <li>Guarantee employment or specific income levels</li>
           <li>Charge any fees to job seekers</li>
@@ -509,7 +548,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <h2>Remote Work Opportunities</h2>
-        <p class="muted">We connect professionals with companies offering various remote work arrangements.</p>
+        <p class="muted">We connect professionals with companies offering various remote work arrangements across multiple countries.</p>
       </div>
 
       <div class="cards two-col">
@@ -520,7 +559,7 @@
             <h3>Part-time opportunities</h3>
             <ul class="list">
               <li><strong>Flexible hours:</strong> 10-30 hours per week</li>
-              <li><strong>Ideal for:</strong> Young professionals or those seeking extra income</li>
+              <li><strong>Ideal for:</strong> Students, parents, or those seeking extra income</li>
               <li><strong>Tools needed:</strong> Computer or smartphone</li>
               <li><strong>Common roles:</strong> Customer support, data entry, virtual assistance</li>
               <li><strong>Work style:</strong> Fully remote, set your own schedule</li>
@@ -579,17 +618,17 @@
         <blockquote class="testimonial fade-in">
           <div class="avatar">A</div>
           <p>"Found a flexible customer service role that fit my schedule as a student. The process was straightforward."</p>
-          <footer>— A., Mumbai</footer>
+          <footer>— A., Canada</footer>
         </blockquote>
         <blockquote class="testimonial fade-in delay-1">
           <div class="avatar">R</div>
           <p>"After being laid off, I connected with a tech company looking for remote developers. Starting my new role next week!"</p>
-          <footer>— R., Bengaluru</footer>
+          <footer>— R., USA</footer>
         </blockquote>
         <blockquote class="testimonial fade-in delay-2">
           <div class="avatar">N</div>
           <p>"The transparency was refreshing. No false promises, just legitimate opportunities that matched my skills."</p>
-          <footer>— N., Delhi</footer>
+          <footer>— N., Germany</footer>
         </blockquote>
       </div>
     </div>
@@ -600,7 +639,7 @@
     <div class="container cta-inner fade-in">
       <div>
         <h2>Start Your Remote Work Journey</h2>
-        <p class="muted">Create your profile today to connect with companies seeking remote talent.</p>
+        <p class="muted">Create your profile today to connect with companies seeking remote talent worldwide.</p>
       </div>
       <button class="btn btn-primary btn-lg pulse open-form-btn">Get Started</button>
     </div>
@@ -634,6 +673,10 @@
         <summary>Do you guarantee I'll find a job?</summary>
         <div>We cannot guarantee employment. Our role is to connect you with potential employers. The hiring decision ultimately rests with the companies reviewing your application.</div>
       </details>
+      <details class="faq fade-in">
+        <summary>Is this service available in my country?</summary>
+        <div>Yes! We currently serve professionals in the United States, Canada, India, Singapore, Italy, France, Germany, Mexico, and South Korea. More countries will be added soon.</div>
+      </details>
     </div>
   </section>
 
@@ -641,8 +684,8 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand" href="#top">RemoteIndia</a>
-        <p class="muted small">Connecting skilled professionals with remote work opportunities.</p>
+        <a class="brand" href="#top">GlobalRemoteJobs</a>
+        <p class="muted small">Connecting skilled professionals with remote work opportunities worldwide.</p>
         <p class="muted small">Registered Office: [Your Business Address]</p>
       </div>
       <nav class="footer-links">
@@ -653,7 +696,7 @@
       </nav>
     </div>
     <div class="container">
-      <p class="muted small">© 2023 RemoteIndia. All rights reserved. We connect job seekers with employers but do not guarantee employment. All hiring and compensation decisions are made by the employers.</p>
+      <p class="muted small">© 2023 GlobalRemoteJobs. All rights reserved. We connect job seekers with employers but do not guarantee employment. All hiring and compensation decisions are made by the employers.</p>
     </div>
   </footer>
 
@@ -663,9 +706,52 @@
       const formStatus = document.getElementById('formStatus');
       const applyNowBtn = document.getElementById('applyNowBtn');
       const openFormBtns = document.querySelectorAll('.open-form-btn');
+      const countrySelector = document.getElementById('countrySelector');
+      const countryFlag = document.getElementById('countryFlag');
+      const countryCode = document.getElementById('countryCode');
+      const phoneInput = document.getElementById('phone');
       
-      // Set country to India
-      document.getElementById('country').value = "India";
+      // Country data with phone patterns for validation
+      const countryData = {
+        us: { code: "+1", flag: "https://flagcdn.com/w20/us.png", pattern: /^[2-9]\d{9}$/, placeholder: "5551234567" },
+        ca: { code: "+1", flag: "https://flagcdn.com/w20/ca.png", pattern: /^[2-9]\d{9}$/, placeholder: "5551234567" },
+        in: { code: "+91", flag: "https://flagcdn.com/w20/in.png", pattern: /^[6-9]\d{9}$/, placeholder: "9876543210" },
+        sg: { code: "+65", flag: "https://flagcdn.com/w20/sg.png", pattern: /^[689]\d{7}$/, placeholder: "91234567" },
+        it: { code: "+39", flag: "https://flagcdn.com/w20/it.png", pattern: /^[3]\d{8,9}$/, placeholder: "3123456789" },
+        fr: { code: "+33", flag: "https://flagcdn.com/w20/fr.png", pattern: /^[67]\d{8}$/, placeholder: "612345678" },
+        de: { code: "+49", flag: "https://flagcdn.com/w20/de.png", pattern: /^[15]\d{9,10}$/, placeholder: "15123456789" },
+        mx: { code: "+52", flag: "https://flagcdn.com/w20/mx.png", pattern: /^[1-9]\d{9}$/, placeholder: "5512345678" },
+        kr: { code: "+82", flag: "https://flagcdn.com/w20/kr.png", pattern: /^[1]\d{8,9}$/, placeholder: "1023456789" }
+      };
+      
+      // Update phone input based on selected country
+      function updatePhoneInput(country) {
+        const data = countryData[country];
+        if (data) {
+          countryFlag.src = data.flag;
+          countryFlag.alt = countrySelector.options[countrySelector.selectedIndex].text + " flag";
+          countryCode.textContent = data.code;
+          phoneInput.placeholder = data.placeholder;
+          
+          // Also update the country selection in the form
+          document.getElementById('country').value = country;
+        }
+      }
+      
+      // Initialize with default country (India)
+      updatePhoneInput('in');
+      
+      // Listen for country selection changes
+      countrySelector.addEventListener('change', function() {
+        updatePhoneInput(this.value);
+      });
+      
+      // Also update when form country changes
+      document.getElementById('country').addEventListener('change', function() {
+        const selectedCountry = this.value;
+        countrySelector.value = selectedCountry;
+        updatePhoneInput(selectedCountry);
+      });
       
       // Form validation function
       function validateForm(form) {
@@ -684,14 +770,19 @@
           nameInput.style.borderColor = '#ff9999';
         }
         
-        // Validate phone - check if it's only numbers
+        // Validate phone based on selected country pattern
         const phoneInput = form.querySelector('input[name="phone"]');
-        if (!phoneInput.value.trim()) {
+        const selectedCountry = document.getElementById('country').value;
+        const phoneValue = phoneInput.value.replace(/\s/g, '');
+        
+        if (!phoneValue) {
           isValid = false;
           phoneInput.style.borderColor = '#ff9999';
-        } else if (!/^\d+$/.test(phoneInput.value.replace(/\s/g, ''))) {
+        } else if (countryData[selectedCountry] && !countryData[selectedCountry].pattern.test(phoneValue)) {
           isValid = false;
           phoneInput.style.borderColor = '#ff9999';
+          formStatus.textContent = 'Please enter a valid phone number for your country.';
+          formStatus.className = 'form-status error';
         }
         
         // Validate email - check if not empty
@@ -699,6 +790,13 @@
         if (!emailInput.value.trim()) {
           isValid = false;
           emailInput.style.borderColor = '#ff9999';
+        }
+        
+        // Validate country
+        const countryInput = form.querySelector('select[name="country"]');
+        if (!countryInput.value) {
+          isValid = false;
+          countryInput.style.borderColor = '#ff9999';
         }
         
         // Validate experience
@@ -740,6 +838,10 @@
             
             // Reset form
             form.reset();
+            // Reset country to default
+            document.getElementById('country').value = 'in';
+            countrySelector.value = 'in';
+            updatePhoneInput('in');
           }, 1500);
           
         } catch (error) {
@@ -754,8 +856,10 @@
         e.preventDefault();
         
         if (!validateForm(form)) {
-          formStatus.textContent = 'Please fill all required fields correctly.';
-          formStatus.className = 'form-status error';
+          if (!formStatus.textContent) {
+            formStatus.textContent = 'Please fill all required fields correctly.';
+            formStatus.className = 'form-status error';
+          }
           return;
         }
         
